@@ -114,6 +114,7 @@ namespace SimplySort
             int indexM = 0;
             int indexL = 0;
             int indexR = 0;
+//loop here !!!!!!
             if (left.Length > 0 && right.Length > 0)
             {
                 if (left[indexL] < right[indexR])
