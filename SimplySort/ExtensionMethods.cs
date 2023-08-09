@@ -114,7 +114,7 @@ namespace SimplySort
             int[] merged = new int[left.Length + right.Length];
             int indexL = 0;
             int indexR = 0;
-            for (int i = 0; i < merged.Length; i++)
+            if (left.Length > 0 && right.Length > 0)
             {
                 if (left.Length > indexL && right.Length > indexR)
                 {
