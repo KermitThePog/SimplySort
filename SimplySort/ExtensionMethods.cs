@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace SimplySort
 {
@@ -111,35 +112,33 @@ namespace SimplySort
         static int[] Merge(int[] left, int[] right)
         {
             int[] merged = new int[left.Length + right.Length];
-            int indexM = 0;
             int indexL = 0;
             int indexR = 0;
-            if (left.Length > 0 && right.Length > 0)
+            for (int i = 0; i < merged.Length; i++)
             {
-                if (left[indexL] < right[indexR])
+                if (left.Length > indexL && right.Length > indexR)
                 {
-                    merged[indexM] = left[indexL];
-                    indexM++;
+                    if (left[indexL] < right[indexR])
+                    {
+                        merged[i] = left[indexL];
+                        indexL++;
+                    }
+                    else
+                    {
+                        merged[i] = right[indexR];
+                        indexR++;
+                    }
+                }
+                else if (left.Length > indexL)
+                {
+                    merged[i] = left[indexL];
                     indexL++;
                 }
-                else
+                else if (right.Length > indexR)
                 {
-                    merged[indexR] = right[indexR];
-                    indexM++;
+                    merged[i] = right[indexR];
                     indexR++;
                 }
-            }
-            else if (left.Length > 0)
-            {
-                merged[indexM] = left[indexL];
-                indexM++;
-                indexL++;
-            }
-            else if (right.Length > 0)
-            {
-                merged[indexM] = right[indexR];
-                indexM++;
-                indexR++;
             }
             return merged;
         }
